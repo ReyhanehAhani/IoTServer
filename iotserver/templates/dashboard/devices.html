@@ -1,0 +1,41 @@
+{% extends 'dashboard/base.html' %}
+
+{% block load %} 
+<body>
+{% endblock %}
+
+{% block dashboard_title %} 
+    Dashboard :: Devices
+{% endblock %}
+
+{% block buttons %} 
+<div class="btn-group me-2">
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="export-csv" onclick="exportCSV('devices.csv');">Export as CSV</button>
+</div>
+{% endblock %}
+
+{% block content %} 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <th scope="row">{{ record['id'] }}</th>
+            <td>{{ record['username'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+<!-- Dirty hack for active pages -->
+{% block devices %}
+active
+{% endblock %}

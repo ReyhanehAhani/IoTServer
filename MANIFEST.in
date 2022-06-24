@@ -1,0 +1,4 @@
+include iotserver/schema.sql
+graft iotserver/static
+graft iotserver/templates
+global-exclude *.pyc

@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %}
+
+{% block load %} 
+<body onload="window.chartLimit = '10'; setupChart();">
+{% endblock %}
+
+{% block dashboard_title %} 
+    Dashboard :: Summary
+{% endblock %}
+
+{% block buttons %} 
+<div class="btn-group me-2">
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="export-image" disabled onclick="exportImage();">Export as image</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="export-pdf" disabled onclick="exportPDF();">Export as pdf</button>
+    <div class="dropdown">
+        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Limit records
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" onclick="window.chartLimit = '10'; loadChart();">Last 10</a></li>
+            <li><a class="dropdown-item" onclick="window.chartLimit = '20'; loadChart();">Last 20</a></li>
+            <li><a class="dropdown-item" onclick="window.chartLimit = 'all'; loadChart();">All records</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %} 
+<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+    <canvas id="myChart"></canvas>
+</div>
+{% endblock %}
+
+<!-- Dirty hack for active pages -->
+{% block dashboard %}
+active
+{% endblock %}

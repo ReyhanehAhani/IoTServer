@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %}
+
+{% block load %} 
+<body onload="loadTable(10)">
+{% endblock %}
+
+{% block dashboard_title %} 
+    Dashboard :: Records
+{% endblock %}
+
+{% block buttons %} 
+<div class="btn-group me-2">
+  <button type="button" class="btn btn-sm btn-outline-secondary" id="export-csv" disabled onclick="exportCSV('records.csv');">Export as CSV</button>
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Limit records
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" onclick="loadTable('10');">Last 10</a></li>
+      <li><a class="dropdown-item" onclick="loadTable('20');">Last 20</a></li>
+      <li><a class="dropdown-item" onclick="loadTable('all');">All records</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %} 
+<div id="messageContainer">
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Device ID</th>
+        <th scope="col">Created</th>
+        <th scope="col">Light</th>
+        <th scope="col">Moisture</th>
+        <th scope="col">Temperature</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+    </tbody>
+  </table>
+{% endblock %}
+
+<!-- Dirty hack for active pages -->
+{% block records %}
+active
+{% endblock %}
