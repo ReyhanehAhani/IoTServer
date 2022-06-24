@@ -16,12 +16,12 @@ def index():
 
 @bp.route('/login')
 def login():
-    return render_template('auth/base.html', authForm=url_for('auth.login'), authType='Logged in', authTarget=url_for('panel.dashboard'), pageType='Login', pageButton='Login')
+    return render_template('auth/base.html', authForm=url_for('auth.login'), authType='Logged in', authTarget=url_for('panel.dashboard'), pageType='Login', pageButton='Login', type="Login")
 
 
 @bp.route('/register')
 def register():
-    return render_template('auth/base.html', authForm=url_for('auth.register'), authType='Registered', authTarget=url_for('panel.index'), pageType='Register', pageButton='Register')
+    return render_template('auth/base.html', authForm=url_for('auth.register'), authType='Registered', authTarget=url_for('panel.index'), pageType='Register', pageButton='Register', type="Register")
 
 
 @bp.route('/dashboard')

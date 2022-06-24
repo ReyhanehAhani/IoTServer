@@ -76,8 +76,6 @@ const validateInput = (username, password) => {
         showMessage('Password must<br>Contain at least 8 characters<br>Contain at least 1 number<br>Contain at least 1 lowercase character<br>Contain at least 1 uppercase character (A-Z)<br>Contains only English letters, numbers and symbols', 'danger')
         return false;
     }
-
-    return true;
 }
 
 const authenticate = (form, type, target) => {
@@ -88,11 +86,11 @@ const authenticate = (form, type, target) => {
         return false;
     }
 
-    if(type == 'Registered') {
+    /*if(type == 'Registered') {
         if(!validateInput(info['username'], info['password'])) {
             return false;
         }
-    }
+    }*/
 
     let data = `username=${info['username']}&password=${info['password']}`;
 

@@ -65,20 +65,20 @@ const loadChart = () => {
         temperature_values.push(rows[i]['temperature']);
       }
       const data = {
-        labels: labels,
+        labels: labels.reverse(),
         datasets: [
           {
-            data: light_values,
+            data: light_values.reverse(),
             label: 'Light',
             borderColor: '#B0B97A',
           },
           {
-            data: moisture_values,
+            data: moisture_values.reverse() ,
             label: 'Moisture',
             borderColor: '#F49586',
           },
           {
-            data: temperature_values,
+            data: temperature_values.reverse() ,
             label: 'Temperature',
             borderColor: '#F7E188',
           }

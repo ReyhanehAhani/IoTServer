@@ -17,16 +17,17 @@ def fetch_recent_record():
     db = get_db()
     user = g.user
 
-    limit = request.form.get('limit', 10)
+    limit = request.args.get('limit', 10)
+    print(limit)
+    
 
     if limit == 'all':
         records = db.execute(
-            "SELECT * FROM `record` WHERE device_id = ?  ORDER BY id ASC", (user['id'], )).fetchall()
+            "SELECT * FROM `record` WHERE device_id = ?  ORDER BY created DESC", (user['id'], )).fetchall()
     else:
         records = db.execute(
-            "SELECT * FROM `record` WHERE device_id = ?  ORDER BY id ASC LIMIT ?", (user['id'], limit, )).fetchall()
-
-
+            "SELECT * FROM `record` WHERE device_id = ?  ORDER BY created DESC LIMIT ?", (user['id'], limit, )).fetchall()
+    
     response = {
         'result': 'success',
         'data': [dict(record) for record in records]

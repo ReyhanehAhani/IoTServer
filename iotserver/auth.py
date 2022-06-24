@@ -49,7 +49,7 @@ def register():
     if not USERNAME_REGEX.match(username) or not PASSWORD_REGEX.match(password):
         return {
             "result": "failure",
-            "reason": f"Weak password or username"
+            "reason": "Invalid password or username"
         }, 401
 
     try:
@@ -81,7 +81,7 @@ def login():
             "result": "failure",
             "reason": "Invalid password or username"
         }, 401
-    print(username, password)
+
     user = db.execute(
         'SELECT * FROM user WHERE username = ?', (
             username,)
